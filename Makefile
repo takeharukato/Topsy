@@ -52,8 +52,7 @@ TMFILES=$(TM)/TMInit.c $(TM)/TMIPC.c $(TM)/TMMain.c \
 IO=IO
 IOFILES=$(IO)/IOMain.c $(IO)/IODevice.c $(IO)/$(ARCH)/IOHal.c \
 	$(IO)/IOConsole.c $(IO)/Drivers/SCN2681_DUART.c \
-	$(IO)/Drivers/FPGA_Comm.c $(IO)/Drivers/FPGA_Prog/fpga_prog.c \
-	$(IO)/Drivers/FPGA_Prog/fpgadata.c $(IO)/Drivers/Loopback.c \
+	 $(IO)/Drivers/Loopback.c \
 	$(IO)/Drivers/intel8254.c
 
 # here we define lists of all source and all object filenames (with path)
@@ -81,9 +80,9 @@ $(OBJ):
 # this builds the Topsy kernel
 kernel: kernel.elf32 kernel.bin kernel.dump kernel.sym kernel.dis
 kernel.elf32: $(REALKERNELOBJS) link.scr
-	$(LD) $(DEBUG) -o kernel.elf32 $(REALKERNELOBJS) -T link.scr
-kernel.bin: $(REALKERNELOBJS) link.scr
-	$(LD) $(DEBUG) --oformat binary -o kernel.bin $(REALKERNELOBJS) -T link.scr
+	$(LD) $(DEBUG) -o kernel.elf32 $(REALKERNELOBJS) -T link.scr -lc
+kernel.bin: kernel.elf32
+	$(OBJCOPY) -O binary $< $@
 kernel.dump: kernel.elf32
 	$(OBJDUMP) -x $< > $@
 kernel.dis: kernel.elf32

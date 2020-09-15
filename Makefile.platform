@@ -41,13 +41,21 @@
 #
 #
 
-GNUMIPS=/opt/mipstools/bin
-CC=$(GNUMIPS)/mips-idt-elf-gcc
-CPP=$(GNUMIPS)/mips-idt-elf-cpp
-AS=$(GNUMIPS)/mips-idt-elf-as
-LD=$(GNUMIPS)/mips-idt-elf-ld
-OBJCOPY=$(GNUMIPS)/mips-idt-elf-objcopy
-SIZE=$(GNUMIPS)/mips-idt-elf-size
-OBJDUMP=$(GNUMIPS)/mips-idt-elf-objdump
-NM=$(GNUMIPS)/mips-idt-elf-nm
+# GNUMIPS=/opt/mipstools/bin
+# CC=$(GNUMIPS)/mips-idt-elf-gcc
+# CPP=$(GNUMIPS)/mips-idt-elf-cpp
+# AS=$(GNUMIPS)/mips-idt-elf-as
+# LD=$(GNUMIPS)/mips-idt-elf-ld
+# OBJCOPY=$(GNUMIPS)/mips-idt-elf-objcopy
+# SIZE=$(GNUMIPS)/mips-idt-elf-size
+# OBJDUMP=$(GNUMIPS)/mips-idt-elf-objdump
+# NM=$(GNUMIPS)/mips-idt-elf-nm
+CC=${CROSS_COMPILE}gcc
+CPP=${CROSS_COMPILE}cpp
+AS=${CROSS_COMPILE}as
+LD=${CROSS_COMPILE}gcc
+OBJCOPY=${CROSS_COMPILE}objcopy
+SIZE=${CROSS_COMPILE}size
+OBJDUMP=${CROSS_COMPILE}objdump
+NM=${CROSS_COMPILE}nm
 

@@ -54,15 +54,6 @@ static IODeviceDesc ioDeviceTable[IO_DEVCOUNT] = {
 	    NULL /* private msg handler */,
 	    FALSE, NULL /* data extension */ },
 
-	{ "fpga", (Address)FPGA_BASE,
-	    NULL, /* buffer must be allocated by driver */
-	    FPGA_CARD, /* interrupt */
-	    (InterruptHandler)devFPGA_interruptHandler,
-	    devFPGA_read, devFPGA_write, 
-	    devFPGA_close, devFPGA_init, 
-	    NULL /* private msg handler */,
-	    FALSE, NULL /* data extension */ },
-
 	{ "loopback", (Address)0, NULL, 
 	    -1, NULL, 
 	    devLoopback_read, devLoopback_write, 
